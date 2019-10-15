@@ -1,12 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { ThemeProvider } from '@material-ui/styles';
+import App from './containers/app-container';
+import theme from './theme';
+import { BrowserRouter as Router } from "react-router-dom";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import {createStore, applyMiddleware} from "redux";
+import {Provider} from "react-redux";
+import thunk from "redux-thunk";
+import AppReducer from "./reducers/reducers";
+import {SnackbarProvider} from "notistack";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const store = createStore(AppReducer, applyMiddleware(thunk));
+
+ReactDOM.render(
+    <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Provider store={store}>
+            <SnackbarProvider maxSnack={3}>
+            <Router>
+                <App />
+            </Router>
+            </SnackbarProvider>
+        </Provider>
+    </ThemeProvider>,
+    document.querySelector('#root'),
+);
+
+
