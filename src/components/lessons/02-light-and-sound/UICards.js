@@ -1,22 +1,13 @@
 import React from "react";
-import {rgbToColor} from "../../utils/colorConverter";
-
-export const CardButtonView = (props) => (
-  <div className="card_button_feature_view">
-    {props.dinoGame}
-    {
-      <p className="buttonState">{`State: ${props.feature.reading.value === 1 ? "PRESSED" : "RELEASED"}`}</p>
-    }
-  </div>
-);
+import {rgbToColor} from "../../../utils/colorConverter";
 
 export const CardLedView = (props) => (
   <div className="card_led_view">
     <div className="led_modes">
-      <button type="button" className="led_mode_button button_blue" value="constant" disabled={props.feature.reading.mode === 1} onClick={props.changeMode}>Constant</button>
-      <button type="button" className="led_mode_button button_blue" value="breathe" disabled={props.feature.reading.mode === 2} onClick={props.changeMode}>Breathe</button>
-      <button type="button" className="led_mode_button button_blue" value="oneshot" disabled={props.feature.reading.mode === 3} onClick={props.changeMode}>Oneshot</button>
-      <button type="button" className="led_mode_button button_blue" value="off" disabled={props.feature.reading.mode === 0} onClick={props.changeMode}>Off</button>
+      <button type="button" className="led_mode_button button_blue" value="constant" disabled={props.feature.reading.mode === 1} onClick={props.changeMode}>Stałe</button>
+      <button type="button" className="led_mode_button button_blue" value="breathe" disabled={props.feature.reading.mode === 2} onClick={props.changeMode}>Pulsujące</button>
+      <button type="button" className="led_mode_button button_blue" value="oneshot" disabled={props.feature.reading.mode === 3} onClick={props.changeMode}>Jednorazowe</button>
+      <button type="button" className="led_mode_button button_blue" value="off" disabled={props.feature.reading.mode === 0} onClick={props.changeMode}>Wyłącz</button>
     </div>
     <div className="led_colorpicker">
       <div>

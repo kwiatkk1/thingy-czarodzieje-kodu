@@ -1,5 +1,5 @@
 import {
-  RECEIVE_NEW_READING, RECEIVE_NEW_NOTIFY_READING, FEATURE_NOTIFICATION_STATUS, CHANGE_CARD_TAB, NOTIFY_IFTTT_TRIGGER_STATUS, RECEIVE_IFTTT_KEY, CLEAN_THE_SLATE, NOTIFY_USER, SET_FEATURE_HAS_EVENT_LISTENER,
+  RECEIVE_NEW_READING, RECEIVE_NEW_NOTIFY_READING, FEATURE_NOTIFICATION_STATUS, CLEAN_THE_SLATE, NOTIFY_USER, SET_FEATURE_HAS_EVENT_LISTENER,
 } from "../actions/misc";
 
 // have to do it this way since the methods in the switch are generic, as we don't have access to other reducers' states here
@@ -82,7 +82,7 @@ const miscState = {
   },
   name: {
     reading: {
-      name: "Thingy:52",
+      name: "",
     },
   },
   advertisingparameters: {
@@ -147,9 +147,6 @@ const miscState = {
     reading: undefined,
     status: false,
   },
-  ifttt: {
-    key: "",
-  },
   battery: {
     reading: {
       status: 100,
@@ -197,33 +194,6 @@ export default (state = miscState, action) => {
       [action.status.feature]: {
         ...state[action.status.feature],
         status: action.status.status,
-      },
-    };
-
-  case CHANGE_CARD_TAB:
-    return {
-      ...state,
-      [action.feature]: {
-        ...state[action.feature],
-        activeTab: action.tab,
-      },
-    };
-
-  case NOTIFY_IFTTT_TRIGGER_STATUS:
-    return {
-      ...state,
-      ifttt: {
-        ...state.ifttt,
-        triggerStatus: action.status,
-      },
-    };
-
-  case RECEIVE_IFTTT_KEY:
-    return {
-      ...state,
-      ifttt: {
-        ...state.ifttt,
-        key: action.key,
       },
     };
 

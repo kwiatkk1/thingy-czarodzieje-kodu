@@ -5,5 +5,4 @@ const AppReducer = combineReducers({
   misc,
 });
 
-
 export default AppReducer;

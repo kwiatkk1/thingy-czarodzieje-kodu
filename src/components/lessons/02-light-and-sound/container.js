@@ -1,18 +1,18 @@
 import {connect} from "react-redux";
-import {readFeature, changeCardTab, writeFeature, toggleFeature} from "../actions/misc";
-import Led from "../components/led";
-import {colorToRgb, rgbToColor} from "../utils/colorConverter";
+import {readFeature, writeFeature} from "actions/misc";
+
+import {colorToRgb, rgbToColor} from "utils/colorConverter";
+
+import Lesson from './index';
 
 const mapStateToProps = ({misc}) => {
   return ({
-    button: misc.button,
     led: misc.led,
   });
 };
 
 const mapDispatchToProps = (dispatch) => ({
   startUiFeatures: () => {
-    dispatch(toggleFeature("button", "on"));
     dispatch(readFeature("led"));
   },
   writeLedColor: (color, led) => {
@@ -76,15 +76,9 @@ const mapDispatchToProps = (dispatch) => ({
     };
     dispatch(writeFeature("led", params));
   },
-  changeTab: (feature, tab) => {
-    dispatch(changeCardTab(feature, tab));
-  },
-  toggleButton: () => {
-    dispatch(toggleFeature("button", "both"));
-  },
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Led);
+)(Lesson);

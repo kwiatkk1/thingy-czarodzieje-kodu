@@ -1,19 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
 
-import BatteryFull from '@material-ui/icons/BatteryFull';
-import Battery20 from '@material-ui/icons/Battery20';
-import Battery30 from '@material-ui/icons/Battery30';
-import Battery50 from '@material-ui/icons/Battery50';
-import Battery60 from '@material-ui/icons/Battery60';
-import Battery80 from '@material-ui/icons/Battery80';
-import Battery90 from '@material-ui/icons/Battery90';
+import BatteryFull from "@material-ui/icons/BatteryFull";
+import Battery20 from "@material-ui/icons/Battery20";
+import Battery30 from "@material-ui/icons/Battery30";
+import Battery50 from "@material-ui/icons/Battery50";
+import Battery60 from "@material-ui/icons/Battery60";
+import Battery80 from "@material-ui/icons/Battery80";
+import Battery90 from "@material-ui/icons/Battery90";
+
+const useStyles = makeStyles({
+  battery: {
+    display: "flex",
+    alignItems: "center"
+  }
+});
 
 export default function Battery({...props}) {
+  const classes = useStyles();
   const batteryIcon = batteryComponentReturner(props.batteryLevel);
+
   return (
-    <div className="battery">
+    <div className={classes.battery}>
       {batteryIcon}
+      {props.batteryLevel}%
     </div>
   );
 }

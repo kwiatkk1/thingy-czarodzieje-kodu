@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
-import {readFeature, onConnectionEvent, disconnect, startDisconnectNotification, startErrorNotification, startWriteNotification, startBatteryNotification, notifyError} from "../actions/misc";
-import App from "../App";
+import {readFeature, onConnectionEvent, disconnect, startDisconnectNotification, startErrorNotification, startWriteNotification, startBatteryNotification, notifyError} from "actions/misc";
+import ConnectionPanel from "./connection-panel";
 
 const mapStateToProps = ({misc}) => {
   return ({
@@ -45,4 +45,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(App);
+)(ConnectionPanel);

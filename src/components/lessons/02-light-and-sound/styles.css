@@ -1,21 +1,3 @@
-.buttonState {
-  display: inline;
-  position: relative;
-  left: calc(50% - 56px);
-  top: 150px;
-}
-
-.dinoGame {
-  width: 100%;
-  position: relative;
-}
-
-.dinoGame > img {
-  display: hidden;
-  position: absolute;
-  left: calc(50% - 40px);
-  top: 50px;
-}
 
 .card_button_feature_view {
   position: relative;
@@ -118,7 +100,7 @@
 .card_led_view .button {
   height: 48px;
   width: 48px;
-  outline: none; 
+  outline: none;
   padding: 0;
   border-radius: 50%;
   margin-right: calc((100% - 192px) / 4);

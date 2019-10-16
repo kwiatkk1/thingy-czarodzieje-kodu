@@ -1,9 +1,6 @@
 export const RECEIVE_NEW_READING = "RECEIVE_NEW_READING";
 export const RECEIVE_NEW_NOTIFY_READING = "RECEIVE_NEW_NOTIFY_READING";
 export const FEATURE_NOTIFICATION_STATUS = "NOTIFY_FEATURE_STATUS";
-export const CHANGE_CARD_TAB = "CHANGE_CARD_TAB";
-export const NOTIFY_IFTTT_TRIGGER_STATUS = "NOTIFY_IFTTT_TRIGGER_STATUS";
-export const RECEIVE_IFTTT_KEY = "RECEIVE_IFTTT_KEY";
 export const CLEAN_THE_SLATE = "CLEAN_THE_SLATE";
 export const NOTIFY_USER = "NOTIFY_USER";
 export const SET_FEATURE_HAS_EVENT_LISTENER = "SET_FEATURE_HAS_EVENT_LISTENER";
@@ -30,22 +27,6 @@ export const featureNotificationStatus = (feature, status) => ({
     feature,
     status,
   },
-});
-
-export const changeCardTab = (feature, tab) => ({
-  type: CHANGE_CARD_TAB,
-  feature,
-  tab,
-});
-
-export const notifyIftttTriggerStatus = (status) => ({
-  type: NOTIFY_IFTTT_TRIGGER_STATUS,
-  status,
-});
-
-export const receiveIFTTTKey = (key) => ({
-  type: RECEIVE_IFTTT_KEY,
-  key,
 });
 
 export const cleanTheSlate = () => ({
@@ -333,26 +314,6 @@ export const triggerIFTTT = (eventName) => {
         dispatch(notifyUser({message: `An event with the name ${String.fromCharCode(parseInt("+ab", 16))}${eventName}${String.fromCharCode(parseInt("+bb", 16))} was triggered on the IFTTT platform`, category: "success"}));
       }
     }
-  };
-};
-
-export const getIFTTTKey = () => {
-  return async (dispatch) => {
-    let key = await localStorage.getItem("iftttkey");
-
-    if (key === null) {
-      key = "";
-    }
-
-    dispatch(receiveIFTTTKey(key));
-  };
-};
-
-export const setIFTTTKey = (key) => {
-  return async (dispatch) => {
-    await localStorage.setItem("iftttkey", key);
-    dispatch(receiveIFTTTKey(key));
-    dispatch(notifyUser({message: "Success", category: "success"}));
   };
 };
 
