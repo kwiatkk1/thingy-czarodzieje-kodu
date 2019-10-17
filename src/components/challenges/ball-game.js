@@ -34,8 +34,9 @@ export default function BallGame(props) {
   }
 
   useEffect(() => {
-    props.onStart();
-  });
+    if (props.connected) props.onStart();
+    return () => { if (props.connected) props.onEnd(); };
+  }, [props.connected]);
 
   useEffect(() => {
     const { x, y, z } = props.gravity;

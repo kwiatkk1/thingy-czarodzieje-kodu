@@ -50,6 +50,7 @@ const mapDispatchToProps = (dispatch) => ({
       blue: blue,
     };
 
+    console.log({ params });
     dispatch(writeFeature("led", params));
   },
   writeLedMode: (mode, led) => {

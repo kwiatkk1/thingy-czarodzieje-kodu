@@ -277,10 +277,13 @@ export const readFeature = (feature) => {
 
 export const writeFeature = (feature, value) => {
   return async (dispatch) => {
-    console.log('writeFeature', {feature, value });
-    await window.thingy[feature].write(value);
-    const reading = await window.thingy[feature].read();
-    dispatch(receiveNewReading(feature, reading));
+    try {
+      await window.thingy[feature].write(value);
+      const reading = await window.thingy[feature].read();
+      dispatch(receiveNewReading(feature, reading));
+    } catch (e) {
+      console.error(e);
+    }
   };
 };
 

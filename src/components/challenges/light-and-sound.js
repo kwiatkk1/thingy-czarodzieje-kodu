@@ -29,7 +29,15 @@ export default function LightAndSound(props) {
 
   useEffect(() => {
     props.onStart();
-  });
+  }, [props.connected]);
+
+  useEffect(() => {
+    const isButtonDown = !!props.buttonPressed;
+
+    if (isButtonDown && typeof window.thingyOnButtonPressed === "function") {
+      window.thingyOnButtonPressed();
+    }
+  }, [props.buttonPressed]);
 
   function handleCodeChange(newValue) {
     localStorage.setItem("ledAndSound", newValue);
@@ -37,12 +45,17 @@ export default function LightAndSound(props) {
 
   function executeCode() {
     const code = localStorage.getItem("ledAndSound");
+    const { writeLedColor } = props;
 
     function sleep(time) { return new Promise(resolve => setTimeout(resolve, time)); }
 
     function changeColor(color) {
       console.log("changeColor", color);
-      props.writeLedColor(color);
+      writeLedColor(color, { ...props.led.reading });
+    }
+
+    function onButtonPressed(callback) {
+      window.thingyOnButtonPressed = callback;
     }
 
     // function changeMode(event) {
@@ -50,7 +63,7 @@ export default function LightAndSound(props) {
     // }
 
     try {
-      eval("(async () => {;\n" + code + "\n;})();");
+      eval("(async () => {;\n" + code + "\n;})()");
       enqueueSnackbar("Kod wczytany!", { variant: "success", preventDuplicate: true });
     } catch (e) {
       console.error(e);

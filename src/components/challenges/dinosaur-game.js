@@ -33,8 +33,9 @@ export default function DinosaurGame(props) {
   }
 
   useEffect(() => {
-    props.onStart();
-  });
+    if (props.connected) props.onStart();
+    return () => { if (props.connected) props.onEnd(); };
+  }, [props.connected]);
 
   useEffect(() => {
     const isButtonDown = !!props.buttonPressed;

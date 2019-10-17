@@ -2,9 +2,11 @@
   "name": "thingy-czarodzieje-kodu",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://kwiatkk1.github.io/thingy-czarodzieje-kodu",
   "dependencies": {
     "@material-ui/core": "^4.5.1",
     "@material-ui/icons": "^4.5.1",
+    "gh-pages": "^2.1.1",
     "notistack": "^0.9.4",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
@@ -18,6 +20,8 @@
     "thingy52_web_bluetooth": "^1.5.2-transpiled"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
