@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2cdb58c0e31b8dc79a6e61991ed28977",
+    "revision": "39332f3bd52b1a3dbcdd7cde1a3ef06a",
     "url": "/thingy-czarodzieje-kodu/index.html"
   },
   {
-    "revision": "e141cf0a5faedea6d1d0",
+    "revision": "4eb64dec96f9fe3c4d92",
     "url": "/thingy-czarodzieje-kodu/static/css/main.6580a36d.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/thingy-czarodzieje-kodu/static/js/2.2a83a3e1.chunk.js"
   },
   {
-    "revision": "e141cf0a5faedea6d1d0",
-    "url": "/thingy-czarodzieje-kodu/static/js/main.3c6ad7bd.chunk.js"
+    "revision": "4eb64dec96f9fe3c4d92",
+    "url": "/thingy-czarodzieje-kodu/static/js/main.f13bbd22.chunk.js"
   },
   {
     "revision": "2a6980aa98cbc777662b",
