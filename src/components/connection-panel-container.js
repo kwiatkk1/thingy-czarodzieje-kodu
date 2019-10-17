@@ -1,14 +1,14 @@
 import {connect} from "react-redux";
-import {readFeature, onConnectionEvent, disconnect, startDisconnectNotification, startErrorNotification, startWriteNotification, startBatteryNotification, notifyError} from "actions/misc";
+import {readFeature, onConnectionEvent, disconnect, startDisconnectNotification, startErrorNotification, startWriteNotification, startBatteryNotification, notifyError} from "module/thingy/thingy-actions";
 import ConnectionPanel from "./connection-panel";
 
-const mapStateToProps = ({misc}) => {
+const mapStateToProps = ({thingy}) => {
   return ({
-    connected: misc.connected.reading,
-    name: misc.name.reading.name,
-    firmware: misc.firmware.reading.firmware,
-    notification: misc.notification,
-    batteryLevel: misc.battery.reading.status,
+    connected: thingy.connected.reading,
+    name: thingy.name.reading.name,
+    firmware: thingy.firmware.reading.firmware,
+    notification: thingy.notification,
+    batteryLevel: thingy.battery.reading.status,
   });
 };
 

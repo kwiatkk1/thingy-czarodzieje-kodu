@@ -9,8 +9,10 @@ import { BrowserRouter as Router } from "react-router-dom";
 import {createStore, applyMiddleware} from "redux";
 import {Provider } from "react-redux";
 import thunk from "redux-thunk";
-import AppReducer from "./reducers/reducers";
+import AppReducer from "./reducers";
 import {SnackbarProvider} from "notistack";
+
+import challenges from "./challenges";
 
 const store = createStore(AppReducer, applyMiddleware(thunk));
 
@@ -20,12 +22,10 @@ ReactDOM.render(
     <Provider store={store}>
       <SnackbarProvider maxSnack={3}>
         <Router>
-          <App />
+          <App challenges={challenges} />
         </Router>
       </SnackbarProvider>
     </Provider>
   </ThemeProvider>,
   document.querySelector("#root"),
 );
-
-

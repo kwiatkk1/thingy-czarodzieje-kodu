@@ -1,8 +1,8 @@
 import {connect} from "react-redux";
 import App from "./app";
 
-const mapStateToProps = ({ misc }) => ({
-  connected: misc.connected.reading
+const mapStateToProps = ({ thingy }) => ({
+  isConnected: thingy.connected.reading
 });
 
 export default connect(mapStateToProps)(App);

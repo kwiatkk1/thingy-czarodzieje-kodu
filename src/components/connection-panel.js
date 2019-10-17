@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
 import ConnectButton from "./connect-button";
 import Drawer from "@material-ui/core/Drawer";
-import Battery from "./battery";
+import Battery from "components/ui/battery";
 import PropTypes from "prop-types";
 import {useSnackbar} from "notistack";
 
