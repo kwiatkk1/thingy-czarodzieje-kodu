@@ -1,10 +1,9 @@
 <html>
 <head>
-  <script src='/thingy-czarodzieje-kodu/ball-game/Box2dWeb.min.js'></script>
-  <script src="/thingy-czarodzieje-kodu/ball-game/Three.js"></script>
-  <script src="/thingy-czarodzieje-kodu/ball-game/jquery.js"></script>
-  <script src="/thingy-czarodzieje-kodu/ball-game/maze.js"></script>
-
+  <script src="Box2dWeb.min.js"></script>
+  <script src="Three.js"></script>
+  <script src="jquery.js"></script>
+  <script src="maze.js"></script>
   <script>
     var camera = undefined,
       scene = undefined,
@@ -19,9 +18,9 @@
       ballMesh = undefined,
       ballRadius = 0.25,
       keyAxis = [0, 0],
-      ironTexture = THREE.ImageUtils.loadTexture("/thingy-czarodzieje-kodu/ball-game/ball.png"),
-      planeTexture = THREE.ImageUtils.loadTexture("/thingy-czarodzieje-kodu/ball-game/concrete.png"),
-      brickTexture = THREE.ImageUtils.loadTexture("/thingy-czarodzieje-kodu/ball-game/brick.png"),
+      ironTexture = THREE.ImageUtils.loadTexture("ball.png"),
+      planeTexture = THREE.ImageUtils.loadTexture("concrete.png"),
+      brickTexture = THREE.ImageUtils.loadTexture("brick.png"),
       gameState = undefined,
 
       // Box2D shortcuts
