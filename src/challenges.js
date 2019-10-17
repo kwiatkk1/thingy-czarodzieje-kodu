@@ -1,7 +1,7 @@
 import LightAndSound2 from "components/challenges/light-and-sound/container";
-import LightAndSound from "components/challenges/light-and-sound-container";
-import DinosaurGame from "components/challenges/dinosaur-game-container";
-import BallGame from "components/challenges/ball-game-container";
+import LightAndSound from "components/challenges/led-container";
+import DinosaurGame from "components/challenges/dino-container";
+import BallGame from "components/challenges/ball-container";
 import Sensors from "components/challenges/sensors-container";
 
 export default [

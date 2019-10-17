@@ -12,15 +12,11 @@ export default function CodeEditor(props) {
       theme="github"
       name="blah2"
       width="100%"
-      height="300px"
       fontSize={20}
       showPrintMargin={true}
       showGutter={true}
       highlightActiveLine={true}
       setOptions={{
-        enableBasicAutocompletion: true,
-        enableLiveAutocompletion: false,
-        enableSnippets: false,
         showLineNumbers: true,
         tabSize: 2,
       }}

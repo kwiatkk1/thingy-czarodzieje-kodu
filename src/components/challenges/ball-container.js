@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import {toggleFeature} from "module/thingy/thingy-actions";
 
-import BallGame from "components/challenges/ball-game";
+import Ball from "components/challenges/ball";
 
 const mapStateToProps = ({ thingy }) => ({
   connected: thingy.connected.reading,
@@ -21,4 +21,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(BallGame);
+)(Ball);

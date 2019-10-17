@@ -1,8 +1,8 @@
 import {connect} from "react-redux";
 import {readFeature, toggleFeature, writeFeature} from "module/thingy/thingy-actions";
 
-import {colorToRgb, rgbToColor} from "utils/colorConverter";
-import Lesson from './light-and-sound.js';
+import {colorToRgb} from "utils/colorConverter";
+import Lesson from "components/challenges/led.js";
 
 const mapStateToProps = ({ thingy }) => {
   return ({

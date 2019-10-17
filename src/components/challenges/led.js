@@ -1,30 +1,20 @@
-import React, {Fragment, useEffect} from "react";
+import React, {useEffect} from "react";
 
-import ChallengeHeader from "components/ui/challenge-header";
-import Paper from "@material-ui/core/Paper";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CodeEditor from "components/ui/code-editor";
-import CardActions from "@material-ui/core/CardActions";
-import Button from "@material-ui/core/Button";
-import {makeStyles} from "@material-ui/core";
 import {useSnackbar} from "notistack";
+import ChallengeFrame from "components/ui/challenge-frame";
+import CodeEditorCard from "components/ui/code-editor-card";
+import useMarkdown from "utils/use-markdown";
+import docsUrl from "components/challenges/led.md";
 
-const useStyles = makeStyles(theme => ({
-  iframeNode: {
-    display: "block"
-  },
-}));
-
-export default function LightAndSound(props) {
+export default function Led(props) {
   const defaultCode = "// onGravityChange((y, x, z) => {\n" +
     "//   if (x > 5) moveRight();\n" +
     "//   if (x < -5) moveLeft();\n" +
     "//   if (y > 5) moveUp();\n" +
     "//   if (y < -5) moveDown();\n" +
     "// })";
-  const editorText = localStorage.getItem("ledAndSound") || defaultCode;
-  const classes = useStyles();
+
+  const markdownText = useMarkdown(docsUrl);
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
@@ -39,12 +29,7 @@ export default function LightAndSound(props) {
     }
   }, [props.buttonPressed]);
 
-  function handleCodeChange(newValue) {
-    localStorage.setItem("ledAndSound", newValue);
-  }
-
-  function executeCode() {
-    const code = localStorage.getItem("ledAndSound");
+  function executeCode(code) {
     const { writeLedColor } = props;
 
     function sleep(time) { return new Promise(resolve => setTimeout(resolve, time)); }
@@ -72,27 +57,11 @@ export default function LightAndSound(props) {
   }
 
   return (
-    <Fragment>
-      <ChallengeHeader text="Dioda LED i głośnik" />
-
-      <Paper square>
-        {JSON.stringify(props.led)}
-      </Paper>
-
-      <Card className={classes.card}>
-        <CardContent>
-          <CodeEditor onChange={handleCodeChange} value={editorText} />
-        </CardContent>
-        <CardActions>
-          <Button onClick={executeCode} size="small" variant="contained" color="primary">
-              Wykonaj
-          </Button>
-          <Button size="small" color="primary">
-              Wyczyśc
-          </Button>
-        </CardActions>
-      </Card>
-
-    </Fragment>
+    <ChallengeFrame
+      headerText="Dioda LED i głośnik"
+      markdownText={markdownText}
+      showcasePanel={<div>{JSON.stringify(props.led)}</div>}
+      codePanel={<CodeEditorCard name="ledAndSound" initial={defaultCode} onRun={executeCode} />}
+    />
   );
 }

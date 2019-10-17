@@ -7,7 +7,8 @@ import {makeStyles} from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(1.05),
+    boxShadow: theme.shadows[2],
   },
 }));
 

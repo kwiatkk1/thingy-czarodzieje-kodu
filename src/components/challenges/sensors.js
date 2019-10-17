@@ -1,19 +1,17 @@
-import React, {Fragment, useEffect} from "react";
+import React from "react";
 
-import ChallengeHeader from "components/ui/challenge-header";
+import useMarkdown from "utils/use-markdown";
+import helpTextUrl from "./sensors.md";
+import ChallengeFrame from "components/ui/challenge-frame";
 
-export default function DinosaurGame(props) {
-
-
-  useEffect(() => {
-    props.onStart();
-  });
+export default function DinosaurGame() {
+  const markdownText = useMarkdown(helpTextUrl);
 
   return (
-    <Fragment>
-      <ChallengeHeader text="Sensory" />
-
-
-    </Fragment>
+    <ChallengeFrame
+      headerText="Sensory"
+      markdownText={markdownText}
+      showcasePanel={<div>...</div>}
+    />
   );
 }

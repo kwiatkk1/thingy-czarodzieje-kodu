@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import {toggleFeature} from "module/thingy/thingy-actions";
 
-import DinosaurGame from "components/challenges/dinosaur-game";
+import Dino from "components/challenges/dino";
 
 const mapStateToProps = ({ thingy }) => {
   return ({
@@ -24,4 +24,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(DinosaurGame);
+)(Dino);
