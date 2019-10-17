@@ -24,7 +24,6 @@ export default function ConnectButton(props) {
   async function start() {
     if (!props.connected) {
       try {
-
         const connected = await window.thingy.connect();
         if (connected) {
           props.onConnectionEvent(true);

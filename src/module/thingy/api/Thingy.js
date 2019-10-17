@@ -64,6 +64,7 @@ import Utilities from "./Utilities.js";
 import EventTarget from "./EventTarget.js";
 import DFUControlPointServiceFirmwarev1 from "./DFUControlPointServiceFirmwarev1.js";
 import DFUControlPointServiceFirmwarev2 from "./DFUControlPointServiceFirmwarev2.js";
+
 class Thingy extends EventTarget {
   constructor(options = {logEnabled: true}) {
     super();
@@ -135,8 +136,8 @@ class Thingy extends EventTarget {
       this.DFU_UUID,
     ];
 
-    this.addEventListener("gattavailable", (...e) => this.executeQueuedOperations(...e));
-    this.addEventListener("operationqueued", (...e) => this.executeQueuedOperations(...e));
+    this.addEventListener("gattavailable", this.executeQueuedOperations.bind(this));
+    this.addEventListener("operationqueued", this.executeQueuedOperations.bind(this));
 
     this.advertisingparameters = new AdvertisingParametersService(this);
     this.microphone = new MicrophoneSensor(this);
