@@ -46,8 +46,8 @@ export default function App(props) {
         <ConnectionPanel />
       </Drawer>
       <main className={classes.content}>
-        {router}
-        {/*{ isConnected ? router : <NotConnectedView /> }*/}
+        {/*{router}*/}
+        { isConnected ? router : <NotConnectedView /> }
       </main>
     </div>
   );

@@ -1,51 +1,58 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Thingy from "thingy52_web_bluetooth";
+import Thingy from "module/thingy/api/Thingy";
 import Button from "@material-ui/core/Button";
+import BluetoothSearchingIcon from "@material-ui/icons/BluetoothSearching";
+import BluetoothDisabledIcon from "@material-ui/icons/BluetoothDisabled";
+import {makeStyles} from "@material-ui/core";
 
-class ConnectButton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.start = this.start.bind(this);
+const useStyles = makeStyles(theme => ({
+  btIconConnect: {
+    color: "#1976d2",
+  },
+  btIconDisconnect: {
+    color: "#f00"
   }
+}));
 
-  async start() {
-    if (!this.props.connected) {
+const thingy = new Thingy({ logEnabled: true });
+window.thingy = thingy;
+
+export default function ConnectButton(props) {
+  const classes = useStyles();
+
+  async function start() {
+    if (!props.connected) {
       try {
-        const thingy = new Thingy({logEnabled: false});
-        window.thingy = thingy;
+
         const connected = await window.thingy.connect();
         if (connected) {
-          this.props.onConnectionEvent(true);
+          props.onConnectionEvent(true);
         }
       } catch (e) {
-        this.props.notifyError(e);
+        props.notifyError(e);
       }
     } else {
-      this.props.onConnectionEvent(false);
-      this.props.disconnect();
+      props.onConnectionEvent(false);
+      props.disconnect();
     }
   }
 
-  render() {
-    const text = this.props.connected
-      ? "Rozłącz"
-      : "Połącz z urządzeniem";
+  const text = props.connected
+    ? "Rozłącz urządzenie"
+    : "Połącz z urządzeniem";
 
-    return (
-      <div>
-        <Button
-          id="connectButton"
-          backgroundColor="transparent"
-          className="buttonRoot"
-          fullWidth={true}
-          onClick={() => this.start()}
-        >
-          {text}
-        </Button>
-      </div>
-    );
-  }
+  const icon = props.connected
+    ? <BluetoothDisabledIcon className={classes.btIconDisconnect} />
+    : <BluetoothSearchingIcon className={classes.btIconConnect} />;
+
+  return (
+    <div>
+      <Button fullWidth={true} onClick={start} startIcon={icon}>
+        {text}
+      </Button>
+    </div>
+  );
 }
 
 ConnectButton.propTypes = {
@@ -54,5 +61,3 @@ ConnectButton.propTypes = {
   onConnectionEvent: PropTypes.func.isRequired,
   notifyError: PropTypes.func,
 };
-
-export default ConnectButton;

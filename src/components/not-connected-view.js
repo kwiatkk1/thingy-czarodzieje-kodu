@@ -1,42 +1,42 @@
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
-import BluetoothDisabledIcon from "@material-ui/icons/BluetoothDisabled";
 import Typography from "@material-ui/core/Typography";
+
+import thingyImage from "assets/thingy-product.png";
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    flexFlow: "column",
     width: "100%",
-    height: "80vh"
+    height: "80vh",
+    textAlign: "center"
   },
-  message: {
-    display: "flex",
-    alignItems: "center",
-  },
-  icon: {
-    backgroundColor: theme.palette.primary.main,
-    color: "#fff",
-    padding: theme.spacing(2),
-    margin: theme.spacing(2)
+  thingyName: {
+    color: "#ccc"
   }
 }));
 
 export default function NotConnectedView() {
   const classes = useStyles();
 
+  const thingyName = localStorage.getItem("thingyName");
+
   return (
     <div className={classes.root}>
+      <img src={thingyImage} alt="" />
       <div className={classes.message}>
-        <div className={classes.icon}>
-          <BluetoothDisabledIcon />
-        </div>
         <Typography variant="h5">
           Ups, Twoje Thingy nie jest połączone!
         </Typography>
+        {
+          thingyName
+            ? <Typography variant="h6" className={classes.thingyName}>{thingyName}</Typography>
+            : null
+        }
       </div>
     </div>
   );
 }
-

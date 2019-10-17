@@ -2,6 +2,7 @@
   "name": "thingy-czarodzieje-kodu",
   "version": "0.1.0",
   "private": true,
+  "pathPrefix": "/thingy-czarodzieje-kodu",
   "homepage": "https://kwiatkk1.github.io/thingy-czarodzieje-kodu",
   "dependencies": {
     "@material-ui/core": "^4.5.1",
@@ -16,14 +17,13 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0",
-    "thingy52_web_bluetooth": "^1.5.2-transpiled"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && cp ./build/index.html ./build/404.html",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

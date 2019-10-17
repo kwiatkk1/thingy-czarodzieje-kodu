@@ -10,6 +10,8 @@ import CodeEditor from "components/ui/code-editor";
 import ChallengeHeader from "components/ui/challenge-header";
 import {useSnackbar} from "notistack";
 
+import { pathPrefix } from "../../../package.json";
+
 const useStyles = makeStyles(theme => ({
   iframeNode: {
     display: "block"
@@ -34,8 +36,8 @@ export default function BallGame(props) {
   }
 
   useEffect(() => {
-    if (props.connected) props.onStart();
-    return () => { if (props.connected) props.onEnd(); };
+    if (props.connected) {props.onStart();}
+    return () => { if (props.connected) {props.onEnd();} };
   }, [props.connected]);
 
   useEffect(() => {
@@ -76,7 +78,7 @@ export default function BallGame(props) {
       <ChallengeHeader text="Gra: Kulka-Thingulka" />
 
       <Paper square>
-        <iframe src="/ball-game/index.html" id="trex-game-iframe" width="100%" height={320} frameBorder={0} className={classes.iframeNode} />
+        <iframe src={`${window.location.hostname !== "localhost" ? pathPrefix : ""}/ball-game/index.html`} id="trex-game-iframe" width="100%" height={320} frameBorder={0} className={classes.iframeNode} />
       </Paper>
 
       <Card className={classes.card}>
@@ -88,7 +90,7 @@ export default function BallGame(props) {
             Wykonaj
           </Button>
           <Button size="small" color="primary">
-            Wyczyśc
+            Wyczyść
           </Button>
         </CardActions>
       </Card>

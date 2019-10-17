@@ -14,6 +14,8 @@ import {SnackbarProvider} from "notistack";
 
 import challenges from "./challenges";
 
+import { pathPrefix } from "../package.json";
+
 const store = createStore(AppReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
@@ -21,7 +23,7 @@ ReactDOM.render(
     <CssBaseline />
     <Provider store={store}>
       <SnackbarProvider maxSnack={3}>
-        <Router>
+        <Router basename={pathPrefix}>
           <App challenges={challenges} />
         </Router>
       </SnackbarProvider>

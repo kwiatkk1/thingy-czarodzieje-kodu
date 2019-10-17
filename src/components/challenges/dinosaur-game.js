@@ -9,6 +9,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CodeEditor from "components/ui/code-editor";
 import ChallengeHeader from "components/ui/challenge-header";
 import {useSnackbar} from "notistack";
+import {pathPrefix} from "../../../package.json";
 
 const useStyles = makeStyles(theme => ({
   iframeNode: {
@@ -77,7 +78,7 @@ export default function DinosaurGame(props) {
       <ChallengeHeader text="Gra: Thingozaurus-Rex" />
 
       <Paper square>
-        <iframe src="/trex-game/dino.game.html" id="trex-game-iframe" width="100%" height={320} frameBorder={0} className={classes.iframeNode} />
+        <iframe src={`${window.location.hostname !== "localhost" ? pathPrefix : ""}/trex-game/dino.game.html`} id="trex-game-iframe" width="100%" height={320} frameBorder={0} className={classes.iframeNode} />
       </Paper>
 
       <Card className={classes.card}>

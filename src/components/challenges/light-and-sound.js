@@ -63,7 +63,7 @@ export default function LightAndSound(props) {
     // }
 
     try {
-      eval("(async () => {;\n" + code + "\n;})()");
+      eval("(async () => {;\n" + code + "\n;})().catch(e => { enqueueSnackbar(\"Ups... wygląda na to, że kod jest niepoprawny :(\", { variant: \"error\", preventDuplicate: true }); })");
       enqueueSnackbar("Kod wczytany!", { variant: "success", preventDuplicate: true });
     } catch (e) {
       console.error(e);
