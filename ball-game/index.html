@@ -291,19 +291,17 @@
 
   <script type="module">
     window.addEventListener("message", event => {
-      const { cmd } = event.data;
-      console.log({ cmd });
-
-      // const { x, y, z } = data.detail.value;
+      const { cmd, value = 1 } = event.data;
+      console.log({ ...event.data });
 
       if (cmd === "MOVE_RIGHT") {
-        window.keyAxis[0] = 1;
+        window.keyAxis[0] = value;
       } else if (cmd === "MOVE_LEFT") {
-        window.keyAxis[0] = -1;
+        window.keyAxis[0] = -value;
       } else if (cmd === "MOVE_UP") {
-        window.keyAxis[1] = 1;
+        window.keyAxis[1] = value;
       } else if (cmd === "MOVE_DOWN") {
-        window.keyAxis[1] = -1;
+        window.keyAxis[1] = -value;
       }
 
     });
