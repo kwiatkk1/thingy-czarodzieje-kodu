@@ -534,8 +534,6 @@
         onExternalMessage: function(event) {
           const { cmd } = event.data;
 
-          console.log({ cmd });
-
           if (cmd === "JUMP_PRESSED") {
             if (!this.crashed) {
               if (!this.activated) {
@@ -560,7 +558,6 @@
               this.play();
             }
           }
-
         },
 
         /**

@@ -1,8 +1,9 @@
 import React from "react";
 import AceEditor from "react-ace";
 
-import "ace-builds/src-noconflict/mode-java";
+// import "ace-builds/webpack-resolver";
 import "ace-builds/src-noconflict/theme-github";
+import "ace-builds/src-noconflict/mode-javascript";
 
 export default function CodeEditor(props) {
   return (
@@ -19,6 +20,7 @@ export default function CodeEditor(props) {
       setOptions={{
         showLineNumbers: true,
         tabSize: 2,
+        useWorker: false
       }}
       {...props}
     />
