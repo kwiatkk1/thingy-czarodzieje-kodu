@@ -6,6 +6,7 @@ import ChallengeFrame from "components/ui/challenge-frame";
 import useMarkdown from "utils/use-markdown";
 
 import docsUrl from "components/challenges/dino.md";
+import {useSnackbar} from "notistack";
 const GAME_NAME = "trex-game";
 
 export default function Dino(props) {
@@ -18,6 +19,7 @@ export default function Dino(props) {
     "// onTap(jumpStart);";
 
   const markdownText = useMarkdown(docsUrl);
+  const { enqueueSnackbar } = useSnackbar();
 
   const trexGameCommand = (cmd) => gameCommand(GAME_NAME, cmd);
 
@@ -29,31 +31,36 @@ export default function Dino(props) {
   useEffect(() => {
     const isButtonDown = !!props.buttonPressed;
 
-    if (isButtonDown && typeof window.thingyOnButtonPressed === "function") {
-      window.thingyOnButtonPressed();
+    if (isButtonDown && typeof window.dinoOnButtonPressed === "function") {
+      window.dinoOnButtonPressed();
     }
   }, [props.buttonPressed]);
 
   useEffect(() => {
-    if (typeof window.thingyOnTap === "function") {
-      window.thingyOnTap();
+    if (typeof window.dinoOnTap === "function") {
+      window.dinoOnTap();
     }
-  }, [props.tapCount, props.tapDirection]);
+  }, [props.tap]);
 
   function executeCode(code) {
-    console.log('executeCode', code)
     function jumpStart() { trexGameCommand("JUMP_PRESSED"); }
     function jumpEnd() { trexGameCommand("JUMP_RELEADED"); }
 
     function onButtonPressed(callback) {
-      window.thingyOnButtonPressed = callback;
+      window.dinoOnButtonPressed = callback;
     }
 
     function onTap(callback) {
-      window.thingyOnTap = callback;
+      window.dinoOnTap = callback;
     }
 
-    eval(code);
+    try {
+      eval(code);
+      enqueueSnackbar("Kod wczytany!", { variant: "success", preventDuplicate: true });
+    } catch (e) {
+      console.error(e);
+      enqueueSnackbar("Ups... wygląda na to, że kod jest niepoprawny :(", { variant: "error", preventDuplicate: true });
+    }
   }
 
   return (

@@ -1,11 +1,14 @@
-## sensory
+## Nordic Thingy:52
 
-To urządzenie ma sporo rożnych sensorów:
+To urządzenie ma sporo różnych układów:
 
-* a
-* b
-* c
+* termometr
+* higrometr (czujnik wilgotności)
+* barometr (czujnik ciśnienia atmosferycznego)
+* czujnik CO2
+* żyroskop
+* czujnik ruchu 
+* przycisk
+* głośnik
 
-```js
-const test = (function () {}());
-```
+Będziemy korzystać z nich na zajęciach!

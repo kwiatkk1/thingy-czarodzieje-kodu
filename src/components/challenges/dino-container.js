@@ -7,8 +7,7 @@ const mapStateToProps = ({ thingy }) => {
   return ({
     connected: thingy.connected.reading,
     buttonPressed: thingy.button.reading.value,
-    tapDirection: thingy.tap.reading.direction,
-    tapCount: thingy.tap.reading.count
+    tap: thingy.tap.reading
   });
 };
 

@@ -11,16 +11,22 @@ To co przekażesz jako argument do funkcji `onButtonPressed` zostanie wykonane,
 gdy naciśniesz pczycisk na urządzeniu.
 
 ```js
-const example = () => alert('Dino!');
-onButtonPressed(example);
+onButtonPressed(() => console.log('Przycisk naciśnięty'));
 ```
+
+Spowoduje to stałe wypisywanie odczytów w konsoli (`shift` + `alt` + `i`).
+
+
+### Zadanie
 
 Niech dinozaur podskakuje po naciśnięciu przycisku!
 
+
 ## Reakcja na puknięcie
 ```js
-const example = () => alert('Dino!');
-onTap(example);
+onTap(/* Twoje funkcja */);
 ```
+
+### Zadanie
 
 Niech dinozaur podskakuje po puknięciu w urządzenie!

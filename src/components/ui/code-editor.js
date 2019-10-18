@@ -13,6 +13,7 @@ export default function CodeEditor(props) {
       theme="github"
       name="blah2"
       width="100%"
+      height="calc(100% - 2em)"
       fontSize={20}
       showPrintMargin={true}
       showGutter={true}

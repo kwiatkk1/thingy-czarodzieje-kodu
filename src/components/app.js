@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function App(props) {
   const classes = useStyles();
-  const { isConnected, challenges } = props;
+  let { isConnected, challenges } = props;
 
   const router = (
     <Switch>

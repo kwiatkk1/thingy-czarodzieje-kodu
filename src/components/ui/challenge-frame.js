@@ -13,6 +13,7 @@ const useStyles = makeStyles(theme => ({
   main: {
     flexGrow: 1,
     display: "flex",
+    height: "calc(100vh - 81px)"
   },
   sourcePanel: {
     flexGrow: 1,
@@ -21,10 +22,14 @@ const useStyles = makeStyles(theme => ({
   },
   codePanel: {
     flexGrow: 1,
+    flexShrink: 1,
   },
   textPanel: {
     width: "40em",
-    padding: theme.spacing(2)
+    flexShrink: 0,
+    padding: theme.spacing(2),
+    overflowY: "scroll",
+    height: "calc(100vh - 81px)"
   },
 }));
 

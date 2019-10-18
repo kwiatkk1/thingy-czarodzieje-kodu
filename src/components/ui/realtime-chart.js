@@ -31,11 +31,18 @@ export default function RealtimeChart(props) {
     stroke: {
       curve: "smooth"
     },
-    markers: {
-      size: 0
+    // markers: {
+    //   size: 0
+    // },
+    crosshairs: {
+      show: false,
+    },
+    tooltip: {
+      enabled: false,
     },
     xaxis: {
       type: "datetime",
+      labels: { show: true }
       //range: XAXISRANGE,
     },
     yaxis: {
@@ -44,12 +51,21 @@ export default function RealtimeChart(props) {
     },
     legend: {
       show: true
-    }
+    },
+    fill: {
+      type: "gradient",
+      gradient: {
+        shadeIntensity: 1,
+        opacityFrom: 0.7,
+        opacityTo: 0.9,
+        stops: [0, 100]
+      }
+    },
   };
 
   const series = [{
     data: temps.slice()
   }];
 
-  return <Chart options={options} series={series} type="line" height="350" />;
+  return <Chart options={options} series={series} type="line" height="250" />;
 }

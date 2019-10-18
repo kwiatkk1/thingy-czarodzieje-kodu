@@ -6,14 +6,9 @@ import CodeEditorCard from "components/ui/code-editor-card";
 import useMarkdown from "utils/use-markdown";
 import docsUrl from "components/challenges/led.md";
 
-export default function Led(props) {
-  const defaultCode = "// onGravityChange((y, x, z) => {\n" +
-    "//   if (x > 5) moveRight();\n" +
-    "//   if (x < -5) moveLeft();\n" +
-    "//   if (y > 5) moveUp();\n" +
-    "//   if (y < -5) moveDown();\n" +
-    "// })";
+import {CardLedView} from "components/challenges/led/panel-card";
 
+export default function Led(props) {
   const markdownText = useMarkdown(docsUrl);
   const { enqueueSnackbar } = useSnackbar();
 
@@ -24,28 +19,41 @@ export default function Led(props) {
   useEffect(() => {
     const isButtonDown = !!props.buttonPressed;
 
-    if (isButtonDown && typeof window.thingyOnButtonPressed === "function") {
-      window.thingyOnButtonPressed();
+    if (isButtonDown && typeof window.ledOnButtonPressed === "function") {
+      window.ledOnButtonPressed();
     }
   }, [props.buttonPressed]);
 
   function executeCode(code) {
-    const { writeLedColor } = props;
+    const { writeLedColor, writeLedMode, writeBrightness, writeCustom, led: { reading: currentState } } = props;
 
+    // eslint-disable-next-line no-unused-vars
     function sleep(time) { return new Promise(resolve => setTimeout(resolve, time)); }
 
+    // eslint-disable-next-line no-unused-vars
     function changeColor(color) {
-      console.log("changeColor", color);
-      writeLedColor(color, { ...props.led.reading });
+      writeLedColor(color, currentState);
     }
 
+    function changeColor(color) {
+      writeLedColor(color, currentState);
+    }
+
+    // eslint-disable-next-line no-unused-vars
+    function changeMode(mode) {
+      writeLedMode(mode, currentState);
+    }
+
+    // eslint-disable-next-line no-unused-vars
+    const changeBrightness = (value) => writeBrightness(value, currentState);
+
+    // eslint-disable-next-line no-unused-vars
+    const customColor = (red, green, blue) => writeCustom({ red, green, blue }, currentState);
+
+    // eslint-disable-next-line no-unused-vars
     function onButtonPressed(callback) {
-      window.thingyOnButtonPressed = callback;
+      window.ledOnButtonPressed = callback;
     }
-
-    // function changeMode(event) {
-    //   props.writeLedMode(event.target.value, this.state.led.reading);
-    // }
 
     try {
       eval("(async () => {;\n" + code + "\n;})().catch(e => { enqueueSnackbar(\"Ups... wygląda na to, że kod jest niepoprawny :(\", { variant: \"error\", preventDuplicate: true }); })");
@@ -56,12 +64,20 @@ export default function Led(props) {
     }
   }
 
+  function handleChangeColor(event) {
+    props.writeLedColor(parseInt(event.target.value, 10), props.led.reading);
+  }
+
+  function handleChangeMode(event) {
+    props.writeLedMode(event.currentTarget.value, props.led.reading);
+  }
+
   return (
     <ChallengeFrame
-      headerText="Dioda LED i głośnik"
+      headerText="Dioda LED"
       markdownText={markdownText}
-      showcasePanel={<div>{JSON.stringify(props.led)}</div>}
-      codePanel={<CodeEditorCard name="ledAndSound" initial={defaultCode} onRun={executeCode} />}
+      showcasePanel={<CardLedView feature={props.led} changeColor={handleChangeColor} changeMode={handleChangeMode} />}
+      codePanel={<CodeEditorCard name="ledAndSound" onRun={executeCode} />}
     />
   );
 }

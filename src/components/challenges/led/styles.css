@@ -1,14 +1,3 @@
-
-.card_button_feature_view {
-  position: relative;
-}
-
-@media (max-width: 340px) {
-  .led_mode_button {
-      font-size: 14px;
-  }
-}
-
 .led_colorpicker .red {
   background-color: #f44336;
 }

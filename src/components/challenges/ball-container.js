@@ -5,6 +5,7 @@ import Ball from "components/challenges/ball";
 
 const mapStateToProps = ({ thingy }) => ({
   connected: thingy.connected.reading,
+  buttonPressed: thingy.button.reading.value,
   gravity: thingy.gravityvector.reading.value
 });
 

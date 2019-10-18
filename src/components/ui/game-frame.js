@@ -8,8 +8,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export function gameCommand(id, cmd) {
-  document.getElementById(id).contentWindow.postMessage({ cmd });
+export function gameCommand(id, cmd, options = {}) {
+  document.getElementById(id).contentWindow.postMessage({ cmd, ...options });
 }
 
 export default function GameFrame(props) {
