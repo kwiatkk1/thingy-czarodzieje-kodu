@@ -7,6 +7,7 @@ import {Route, Switch} from "react-router-dom";
 
 import NotConnectedView from "../components/not-connected-view";
 import ConnectionPanel from "../components/connection-panel-container";
+import StatusView from "components/status-view";
 
 const drawerWidth = 240;
 
@@ -35,7 +36,12 @@ export default function App(props) {
 
   const router = (
     <Switch>
-      {challenges.map(item => <Route exact key={item.path} path={item.path} component={item.component} />)}
+      <Route exact path="/status" component={StatusView} />
+      {
+        isConnected
+          ? challenges.map(item => <Route exact key={item.path} path={item.path} component={item.component} />)
+          : <Route path="*" component={NotConnectedView} />
+      }
     </Switch>
   );
 
@@ -46,7 +52,7 @@ export default function App(props) {
         <ConnectionPanel />
       </Drawer>
       <main className={classes.content}>
-        { isConnected ? router : <NotConnectedView /> }
+        {router}
       </main>
     </div>
   );

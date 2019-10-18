@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useEffect} from "react";
 import ConnectButton from "./connect-button";
 import Drawer from "@material-ui/core/Drawer";
 import Battery from "components/ui/battery";
@@ -8,10 +8,43 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import ListItemText from "@material-ui/core/ListItemText";
+import {Link as RouterLink} from "react-router-dom";
 
+import { saveDeviceStatus } from "module/firestore/firebase";
+import Button from "@material-ui/core/Button";
+import {makeStyles} from "@material-ui/core";
+
+const StatusLink = React.forwardRef((props, ref) => (
+  <RouterLink innerRef={ref} to="/status" {...props} />
+));
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    flexGrow: "1"
+  },
+  statusBtn: {
+    alignSelf: "flex-end",
+    color: "#ccc"
+  },
+  spacer: {
+    flexGrow: 1
+  }
+}));
 
 export default function ConnectionPanel(props) {
   const { enqueueSnackbar } = useSnackbar();
+  const classes = useStyles();
+
+  useEffect(() => {
+    if (props.connected && props.name) {
+      saveDeviceStatus(props.name, {
+        battery: props.batteryLevel,
+        firmware: props.firmware
+      });
+    }
+  }, [props.connected, props.name, props.firmware, props.batteryLevel]);
 
   function onConnectionEvent(state) {
     props.onConnectionEvent(state);
@@ -29,13 +62,10 @@ export default function ConnectionPanel(props) {
     }
   }
 
-  const connectButton = <ConnectButton onConnectionEvent={onConnectionEvent} disconnect={props.disconnect} notifyError={props.notifyError} connected={props.connected}/>;
+  const connectButton = <ConnectButton onConnectionEvent={onConnectionEvent} disconnect={props.disconnect} notifyError={props.notifyError} connected={props.connected} />;
+  const statusButton = <Button fullWidth={true} className={classes.statusBtn} component={StatusLink}>status</Button>;
 
-  if (!props.connected) {
-    return connectButton;
-  }
-
-  const infoBlock = props.name && props.firmware && props.batteryLevel
+  const infoBlock = props.connected && props.name && props.firmware && props.batteryLevel
     ? (
       <ListItem>
         <ListItemAvatar>
@@ -49,9 +79,11 @@ export default function ConnectionPanel(props) {
     : null;
 
   return (
-    <div>
+    <div className={classes.root}>
       {infoBlock}
       {connectButton}
+      <div className={classes.spacer} />
+      {statusButton}
     </div>
   );
 }
