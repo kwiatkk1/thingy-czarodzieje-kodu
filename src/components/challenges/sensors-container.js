@@ -5,16 +5,16 @@ import Sensors from "./sensors";
 
 const mapStateToProps = ({ thingy }) => {
   return ({
-    buttonPressed: thingy.button.reading.value,
-    tapDirection: thingy.tap.reading.direction,
-    tapCount: thingy.tap.reading.count
+    connected: thingy.connected.reading,
+    temperature: thingy.temperature.reading,
+    humidity: thingy.humidity.reading
   });
 };
 
 const mapDispatchToProps = (dispatch) => ({
   onStart: () => {
-    dispatch(toggleFeature("button", "on"));
-    dispatch(toggleFeature("tap", "on"));
+    dispatch(toggleFeature("temperature", "on"));
+    dispatch(toggleFeature("humidity", "on"));
   }
 });
 
