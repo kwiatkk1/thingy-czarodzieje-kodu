@@ -1,7 +1,7 @@
 export const RECEIVE_NEW_READING = "RECEIVE_NEW_READING";
 export const RECEIVE_NEW_NOTIFY_READING = "RECEIVE_NEW_NOTIFY_READING";
 export const FEATURE_NOTIFICATION_STATUS = "NOTIFY_FEATURE_STATUS";
-export const CLEAN_THE_SLATE = "CLEAN_THE_SLATE";
+export const CLEAN_THE_STATE = "CLEAN_THE_STATE";
 export const NOTIFY_USER = "NOTIFY_USER";
 export const SET_FEATURE_HAS_EVENT_LISTENER = "SET_FEATURE_HAS_EVENT_LISTENER";
 
@@ -29,8 +29,8 @@ export const featureNotificationStatus = (feature, status) => ({
   },
 });
 
-export const cleanTheSlate = () => ({
-  type: CLEAN_THE_SLATE,
+export const cleanTheState = () => ({
+  type: CLEAN_THE_STATE,
 });
 
 export const notifyUser = (message, category) => ({
@@ -296,7 +296,7 @@ export const onConnectionEvent = (state) => {
 export const disconnect = () => {
   return async (dispatch) => {
     await window.thingy.disconnect();
-    dispatch(cleanTheSlate());
+    dispatch(cleanTheState());
   };
 };
 
@@ -329,7 +329,7 @@ export const startDisconnectNotification = () => {
   return async (dispatch) => {
     const disconnectListener = async (e) => {
       await window.thingy.disconnect();
-      dispatch(cleanTheSlate());
+      dispatch(cleanTheState());
       dispatch(onConnectionEvent(false));
       dispatch(notifyUser({message: "Lost connection to your device. Please try to reconnect", category: "error"}));
     };

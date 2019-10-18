@@ -46,9 +46,10 @@ export default function ConnectionPanel(props) {
     }
   }, [props.connected, props.name, props.firmware, props.batteryLevel]);
 
-  function onConnectionEvent(state) {
-    props.onConnectionEvent(state);
-    if (state) {
+  function onConnectionEvent(isConnected) {
+    props.onConnectionEvent(isConnected);
+
+    if (isConnected) {
       props.readName();
       props.readFirmware();
 

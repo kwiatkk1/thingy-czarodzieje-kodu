@@ -2,7 +2,7 @@ import {connect} from "react-redux";
 import {readFeature, onConnectionEvent, disconnect, startDisconnectNotification, startErrorNotification, startWriteNotification, startBatteryNotification, notifyError} from "module/thingy/thingy-actions";
 import ConnectionPanel from "./connection-panel";
 
-const mapStateToProps = ({thingy}) => {
+const mapStateToProps = ({ thingy }) => {
   return ({
     connected: thingy.connected.reading,
     name: thingy.name.reading.name,

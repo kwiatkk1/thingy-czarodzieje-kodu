@@ -2,7 +2,7 @@ import {
   RECEIVE_NEW_READING,
   RECEIVE_NEW_NOTIFY_READING,
   FEATURE_NOTIFICATION_STATUS,
-  CLEAN_THE_SLATE,
+  CLEAN_THE_STATE,
   NOTIFY_USER,
   SET_FEATURE_HAS_EVENT_LISTENER,
 } from "module/thingy/thingy-actions";
@@ -210,7 +210,7 @@ export default (state = thingyState, action) => {
       },
     };
 
-  case CLEAN_THE_SLATE:
+  case CLEAN_THE_STATE:
     return thingyState;
 
   case NOTIFY_USER:

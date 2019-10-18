@@ -6,17 +6,14 @@ import BluetoothSearchingIcon from "@material-ui/icons/BluetoothSearching";
 import BluetoothDisabledIcon from "@material-ui/icons/BluetoothDisabled";
 import {makeStyles} from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   btIconConnect: {
     color: "#1976d2",
   },
   btIconDisconnect: {
     color: "#f00"
   }
-}));
-
-const thingy = new Thingy({ logEnabled: true });
-window.thingy = thingy;
+});
 
 export default function ConnectButton(props) {
   const classes = useStyles();
@@ -24,6 +21,8 @@ export default function ConnectButton(props) {
   async function start() {
     if (!props.connected) {
       try {
+        const thingy = new Thingy({ logEnabled: false });
+        window.thingy = thingy;
         const connected = await window.thingy.connect();
         if (connected) {
           props.onConnectionEvent(true);
