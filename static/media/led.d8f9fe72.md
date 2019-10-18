@@ -39,6 +39,14 @@ Możesz opóźnić wykonanie następnej komendy:
 await sleep(100);
 ```
 
+## Odgłosy
+```js
+/**
+ * @param {number} value 0-8
+ **/
+playSample(value);
+```
+
 ## Przycisk
 ```js
 onButtonPressed(async () => {
@@ -57,3 +65,4 @@ for (let i = 0; i < 7; i++) {
 # Zadania
 
 * napisz program, który po naciśnięciu przycisku 10 razy zmieni kolor diody (czerwona/niebieska)
+* napisz program, który po naciśnięciu przycisku odegra inny dzwiek
