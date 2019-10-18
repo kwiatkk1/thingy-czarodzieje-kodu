@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/thingy-czarodzieje-kodu/precache-manifest.f992b29ba9357ad5e2c4dcbaec6f7f43.js"
+  "/thingy-czarodzieje-kodu/precache-manifest.3e8f2aaa1d1301c96da2e3d2876ff3df.js"
 );
 
 self.addEventListener('message', (event) => {
