@@ -50,6 +50,10 @@ export default function Led(props) {
     // eslint-disable-next-line no-unused-vars
     const customColor = (red, green, blue) => writeCustom({ red, green, blue }, currentState);
 
+    const playSample = number => {
+      props.playAudio({ mode: 3, sample: number });
+    };
+
     // eslint-disable-next-line no-unused-vars
     function onButtonPressed(callback) {
       window.ledOnButtonPressed = callback;

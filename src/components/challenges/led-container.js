@@ -1,9 +1,8 @@
 import {connect} from "react-redux";
-import {readFeature, toggleFeature, writeFeature} from "module/thingy/thingy-actions";
+import {readFeature, toggleFeature, writeFeature, writeToSpeaker} from "module/thingy/thingy-actions";
 
 import {colorToRgb, rgbToColor} from "utils/colorConverter";
 import Lesson from "components/challenges/led.js";
-import {number} from "prop-types";
 
 const mapStateToProps = ({ thingy }) => {
   return ({
@@ -94,7 +93,10 @@ const mapDispatchToProps = (dispatch) => ({
       blue: blue,
     };
     dispatch(writeFeature("led", params));
-  }
+  },
+  playAudio: (data) => {
+    dispatch(writeToSpeaker(data));
+  },
 });
 
 export default connect(
