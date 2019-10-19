@@ -7,13 +7,8 @@ changeColor(1); // można przekazać od 1 do 7
 
 Zmiana koloru (własne):
 ```js
-/**
- * @param {number} red 0-255
- * @param {number} green 0-255
- * @param {number} blue 0-255
- * @param {number} intensivity 0-100
- **/
 customColor(red, green, blue);
+// gdzie red, green i blue to liczby 0-255
 ```
 
 Zmiana trybu pracy diody:
@@ -52,6 +47,25 @@ playSample(value);
 onButtonPressed(async () => {
   /* tutaj Twój kod w reakcji na naciśnięcie przycisku */
 });
+```
+
+## Zmienna
+Można tworzyć i korzystać ze zmiennych
+```js
+let nazwaZmiennej = 1;
+
+// zwiększenie wartości o jeden: 
+nazwaZmiennej = nazwaZmiennej + 1;
+```
+
+## Warunek
+Można ją wykorzystać jako warunek
+```js
+if (nazwaZmiennej > 1) {
+  // wykona się tylko wtedy, gdy warunek jest spełniony
+} else {
+  // wykona się tylko wtedy, gdy warunek nie jest
+}
 ```
 
 ## Pętla

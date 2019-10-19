@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7af5f836e1ad03a6eb57922dcdfde72a",
+    "revision": "605f87f3ec37e75abed13940bcdb89f7",
     "url": "/thingy-czarodzieje-kodu/index.html"
   },
   {
-    "revision": "a36e91bf4f9ee3c5a3b6",
+    "revision": "d8cba6e2186b0635703c",
     "url": "/thingy-czarodzieje-kodu/static/css/main.f3a50664.chunk.css"
   },
   {
@@ -12,24 +12,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/thingy-czarodzieje-kodu/static/js/2.678bd005.chunk.js"
   },
   {
-    "revision": "a36e91bf4f9ee3c5a3b6",
-    "url": "/thingy-czarodzieje-kodu/static/js/main.29bf651b.chunk.js"
+    "revision": "d8cba6e2186b0635703c",
+    "url": "/thingy-czarodzieje-kodu/static/js/main.e7fe8bb6.chunk.js"
   },
   {
     "revision": "2a6980aa98cbc777662b",
     "url": "/thingy-czarodzieje-kodu/static/js/runtime-main.33386c7f.js"
   },
   {
-    "revision": "555124dbf1654258ec857485db43dfc6",
-    "url": "/thingy-czarodzieje-kodu/static/media/ball.555124db.md"
+    "revision": "985f2a4a6bca10282e1be8ad29631557",
+    "url": "/thingy-czarodzieje-kodu/static/media/ball.985f2a4a.md"
   },
   {
-    "revision": "000798247d7c1dc539ad4bb60b1b6b37",
-    "url": "/thingy-czarodzieje-kodu/static/media/dino.00079824.md"
+    "revision": "e4ba735527912edf2cff5f17fb286eb9",
+    "url": "/thingy-czarodzieje-kodu/static/media/dino.e4ba7355.md"
   },
   {
-    "revision": "d8f9fe72958b89792894d70afa638ec0",
-    "url": "/thingy-czarodzieje-kodu/static/media/led.d8f9fe72.md"
+    "revision": "68ef68e7c255aa9038e5ba9d826fbda9",
+    "url": "/thingy-czarodzieje-kodu/static/media/led.68ef68e7.md"
   },
   {
     "revision": "2cd26beec3209c5386d82251a00e8fcd",

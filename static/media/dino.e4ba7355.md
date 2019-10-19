@@ -11,7 +11,9 @@ To co przekażesz jako argument do funkcji `onButtonPressed` zostanie wykonane,
 gdy naciśniesz pczycisk na urządzeniu.
 
 ```js
-onButtonPressed(() => console.log('Przycisk naciśnięty'));
+onButtonPressed(() => {
+  console.log('Przycisk naciśnięty');
+});
 ```
 
 Spowoduje to stałe wypisywanie odczytów w konsoli (`shift` + `alt` + `i`).
