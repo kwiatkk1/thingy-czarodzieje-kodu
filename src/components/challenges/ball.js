@@ -51,6 +51,35 @@ export default function Ball(props) {
       window.ballOnGravityChange = callback;
     }
 
+    const { writeLedColor, writeLedMode, writeBrightness, writeCustom, led: { reading: currentState } } = props;
+
+    // eslint-disable-next-line no-unused-vars
+    function sleep(time) { return new Promise(resolve => setTimeout(resolve, time)); }
+
+    // eslint-disable-next-line no-unused-vars
+    function changeColor(color) {
+      writeLedColor(color, currentState);
+    }
+
+    function changeColor(color) {
+      writeLedColor(color, currentState);
+    }
+
+    // eslint-disable-next-line no-unused-vars
+    function changeMode(mode) {
+      writeLedMode(mode, currentState);
+    }
+
+    // eslint-disable-next-line no-unused-vars
+    const changeBrightness = (value) => writeBrightness(value, currentState);
+
+    // eslint-disable-next-line no-unused-vars
+    const customColor = (red, green, blue) => writeCustom({ red, green, blue }, currentState);
+
+    const playSample = number => {
+      props.playAudio({ mode: 3, sample: number });
+    };
+
     try {
       eval(code);
       enqueueSnackbar("Kod wczytany!", { variant: "success", preventDuplicate: true });
