@@ -10,14 +10,6 @@ import {useSnackbar} from "notistack";
 const GAME_NAME = "trex-game";
 
 export default function Dino(props) {
-  const defaultCode = "// jumpStart();\n" +
-    "\n" +
-    "// onButtonPressed(jumpStart)\n" +
-    "\n" +
-    "// onTap(() => console.log('tap!'));\n" +
-    "\n" +
-    "// onTap(jumpStart);";
-
   const markdownText = useMarkdown(docsUrl);
   const { enqueueSnackbar } = useSnackbar();
 
@@ -68,7 +60,7 @@ export default function Dino(props) {
       headerText="Gra: Thingozaurus-Rex"
       markdownText={markdownText}
       showcasePanel={<GameFrame id={GAME_NAME} publicPath="/trex-game/dino.game.html" />}
-      codePanel={<CodeEditorCard name="dinoGame" initial={defaultCode} onRun={executeCode} />}
+      codePanel={<CodeEditorCard name="dinoGame" onRun={executeCode} />}
     />
   );
 }
