@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "605f87f3ec37e75abed13940bcdb89f7",
+    "revision": "00749cc7f220eee2fd5b34c76d93aa93",
     "url": "/thingy-czarodzieje-kodu/index.html"
   },
   {
-    "revision": "d8cba6e2186b0635703c",
+    "revision": "2b3f0421f030779585a9",
     "url": "/thingy-czarodzieje-kodu/static/css/main.f3a50664.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/thingy-czarodzieje-kodu/static/js/2.678bd005.chunk.js"
   },
   {
-    "revision": "d8cba6e2186b0635703c",
-    "url": "/thingy-czarodzieje-kodu/static/js/main.e7fe8bb6.chunk.js"
+    "revision": "2b3f0421f030779585a9",
+    "url": "/thingy-czarodzieje-kodu/static/js/main.f0807ac1.chunk.js"
   },
   {
     "revision": "2a6980aa98cbc777662b",
@@ -28,8 +28,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/thingy-czarodzieje-kodu/static/media/dino.e4ba7355.md"
   },
   {
-    "revision": "68ef68e7c255aa9038e5ba9d826fbda9",
-    "url": "/thingy-czarodzieje-kodu/static/media/led.68ef68e7.md"
+    "revision": "1423d2be6ded40c4adc0568edeec9934",
+    "url": "/thingy-czarodzieje-kodu/static/media/led.1423d2be.md"
   },
   {
     "revision": "2cd26beec3209c5386d82251a00e8fcd",

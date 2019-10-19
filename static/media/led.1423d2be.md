@@ -78,5 +78,6 @@ for (let i = 0; i < 7; i++) {
 
 # Zadania
 
+* napisz program, który zagra dźwięk, a potem zaświeci czerwony, potem czerwony bardzo słabo, a na koniec zostawi urządzenie z pulsującym niebieskim
 * napisz program, który po naciśnięciu przycisku 10 razy zmieni kolor diody (czerwona/niebieska)
 * napisz program, który po naciśnięciu przycisku odegra inny dzwiek
