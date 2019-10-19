@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {toggleFeature} from "module/thingy/thingy-actions";
+import {toggleFeature, writeToSpeaker} from "module/thingy/thingy-actions";
 
 import Dino from "components/challenges/dino";
 
@@ -17,7 +17,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(toggleFeature("tap", "on"));
   },
   onEnd: () => {
-  }
+  },
+  playAudio: (data) => {
+    dispatch(writeToSpeaker(data));
+  },
 });
 
 export default connect(

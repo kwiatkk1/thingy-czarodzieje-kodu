@@ -46,6 +46,10 @@ export default function Dino(props) {
       window.dinoOnTap = callback;
     }
 
+    const playSample = number => {
+      props.playAudio({ mode: 3, sample: number });
+    };
+
     try {
       eval(code);
       enqueueSnackbar("Kod wczytany!", { variant: "success", preventDuplicate: true });
